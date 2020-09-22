@@ -1,8 +1,12 @@
-name: build-workflow
+name: Build Run and Test
 
 on:
   push:
+    paths-ignore: 
+      - '**.md'
   pull_request:
+    paths-ignore: 
+      - '**.md'
     
 jobs:
   build:
