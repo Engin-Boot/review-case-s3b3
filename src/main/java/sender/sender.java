@@ -4,18 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
-import java.io.FileWriter;
-import java.util.StringTokenizer;
-import java.io.FileReader; 
-import java.util.Arrays; 
-import java.io.File; 
-import java.util.Arrays;
 import java.io.InputStreamReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader; 
 
 
 
@@ -24,7 +14,7 @@ class sender {
     public static final String DELIMITER = ",";
   
  static boolean flag= false;
-    public static void read(String fileName, String columnFilter) { 
+    public static void whenFileIsProvidedThenRead(String fileName, String columnFilter) { 
 		File inputFile = null; 
 		FileReader inputFileReader = null;
 		BufferedReader br = null;
@@ -129,7 +119,7 @@ class sender {
 			if(args.length>1) {
 				filteredColumnName = args[1];
 			}
-			sender.read(fileName, filteredColumnName);
+			sender.whenFileIsProvidedThenRead(fileName, filteredColumnName);
 		}
 		else {
 			System.err.println("No File name provided");
