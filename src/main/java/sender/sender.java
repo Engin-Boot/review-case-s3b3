@@ -13,7 +13,7 @@ class sender {
 
     public static final String DELIMITER = ",";
   
- static boolean flag= false;
+ static boolean checkLastColumnFlag= false;
     public static void whenFileIsProvidedThenRead(String fileName, String columnFilter) { 
 		File inputFile = null; 
 		FileReader inputFileReader = null;
@@ -34,17 +34,14 @@ class sender {
 			}
 			if(line != null){
                 String[] coloumns = line.split(",");
-                // for(String c: coloumns){
-                //     System.out.println(c);
-                // }
+               
 				INDEX = printColumnsAndGetIndex(coloumns, columnFilter);
 			}
 			if(INDEX == -1){
 				System.err.println("Column: '"+columnFilter+"' does not exist in file");
 				return;
 			}
-			InputStreamReader ip = new InputStreamReader(System.in);
-			BufferedReader reader = new BufferedReader(ip);
+			
 			while ((line = br.readLine()) != null  ) { 
                
 				String[] row = line.split(",");
@@ -53,7 +50,7 @@ class sender {
                     if(row.length > INDEX)
                      System.out.println(row[INDEX]); 
 				}
-				else if(row.length !=0  && flag==true){
+				else if(row.length !=0  &&  checkLastColumnFlag==true){
 				
 						printRowData(row);
 					
@@ -90,7 +87,7 @@ class sender {
 			for(int i=0;i<=columns.length-1;i++) {
 				if(columns[i].equalsIgnoreCase(filter)){
 					if(filter.equalsIgnoreCase(columns[columns.length-1])){
-						flag=true;
+						checkLastColumnFlag=true;
 						System.out.println(columns[i] );
 					index = i;
 					
