@@ -1,23 +1,25 @@
 package com.philips.receiver;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 public class Receiver {
 
 	private static HashMap<String, Integer> wordCount = new HashMap<String, Integer>();
+
 	public static void main(final String[] args) throws IOException {
-		final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		countFrequency(reader);
+
+		readFromconsole();
+
 		try {
 			writeWordCountToCSV(wordCount);
 		} catch (final Exception e) {
@@ -25,14 +27,21 @@ public class Receiver {
 		}
 	}
 
+	private static void readFromconsole() {
+		// TODO Auto-generated method stub
+		final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		countFrequency(reader);
+	}
+
 	public static void countFrequency(final BufferedReader reader) {
 
 		try {
-			String name = reader.readLine();
-			while (name != null) {
+
+			String line;
+			while ((line = reader.readLine()) != null) {
 				Set<String> wordSet = new TreeSet<String>();
-				name = name.replaceAll("[\\p{Punct}&&[^/]]+", "");
-				wordSet = Tokenizer(name);
+				line = line.replaceAll("[\\p{Punct}&&[^/]]+", "");
+				wordSet = tokenizer(line);
 				for (final String word : wordSet) {
 					if (!wordCount.containsKey(word)) {
 						wordCount.put(word, 1);
@@ -41,14 +50,14 @@ public class Receiver {
 						wordCount.put(word, count + 1);
 					}
 				}
-				name = reader.readLine();
+
 			}
 		} catch (final IOException e) {
 			e.getMessage();
 		}
 	}
 
-	public static Set<String> Tokenizer(final String review) {
+	public static Set<String> tokenizer(final String review) {
 		final Set<String> setOfWordsInReview = new TreeSet<String>();
 		final StringTokenizer st = new StringTokenizer(review, " ");
 		while (st.hasMoreTokens()) {
@@ -79,4 +88,3 @@ public class Receiver {
 		pw.close();
 	}
 }
-
