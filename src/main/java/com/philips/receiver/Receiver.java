@@ -2,7 +2,6 @@ package com.philips.receiver;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -14,7 +13,7 @@ import java.util.TreeSet;
 
 public class Receiver {
 
-	private static HashMap<String, Integer> wordCount = new HashMap<String, Integer>();
+	private static HashMap<String, Integer> wordCount = new HashMap<String,Integer>();
 
 	public static void main(final String[] args) throws IOException {
 
@@ -28,7 +27,7 @@ public class Receiver {
 	}
 
 	private static void readFromconsole() {
-		// TODO Auto-generated method stub
+
 		final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		countFrequency(reader);
 	}
@@ -39,9 +38,8 @@ public class Receiver {
 
 			String line;
 			while ((line = reader.readLine()) != null) {
-				Set<String> wordSet = new TreeSet<String>();
 				line = line.replaceAll("[\\p{Punct}&&[^/]]+", "");
-				wordSet = tokenizer(line);
+				Set<String> wordSet = tokenizer(line);
 				for (final String word : wordSet) {
 					if (!wordCount.containsKey(word)) {
 						wordCount.put(word, 1);
@@ -68,23 +66,26 @@ public class Receiver {
 	}
 
 	public static void writeWordCountToCSV(final Map<String, Integer> wordCount) throws IOException {
-		Set<String> wordSet = new TreeSet<String>();
-		wordSet = wordCount.keySet();
+
+		 Set<String>wordSet = wordCount.keySet();
 		String str = "Word,Count\n";
+		StringBuilder bld = new StringBuilder();
+
 		for (final String word : wordSet) {
 			System.out.println(word + " : " + wordCount.get(word));
-			str = str + word + "," + Integer.toString(wordCount.get(word)) + "\n";
-		}
+			 bld.append(word + "," + Integer.toString(wordCount.get(word)) + "\n");
+			 str = str+bld.toString();
 
-		PrintWriter pw = null;
-		try {
-			pw = new PrintWriter(new File("output.csv"));
-		} catch (final FileNotFoundException e) {
-			e.getMessage();
-			e.printStackTrace();
 		}
+		
+
+		PrintWriter pw = new PrintWriter(new File("output.csv"));
+	
+		
 		pw.println(str);
+		  
 		pw.flush();
 		pw.close();
+		  
 	}
 }
