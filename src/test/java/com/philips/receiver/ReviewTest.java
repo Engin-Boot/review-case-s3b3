@@ -7,52 +7,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Set;
-//import java.util.StringTokenizer;
 import java.util.TreeSet;
 
 import org.junit.Test;
 
 public class ReviewTest {
 
-	/*
-	@Test
-	public void whenAStringContainsMultipleWordsThenEachWordMustGetAddedToTheList(){
-		String multipleWords = "Illuminati is real";
-		HashMap<String,Integer> wordCount = new HashMap<>();
-		
-		final Set<String> setOfWordsInReview = new TreeSet<String>();
-		final StringTokenizer st = new StringTokenizer( multipleWords, " ");
-		while (st.hasMoreTokens()) {
-			final String s = st.nextToken();
-			setOfWordsInReview.add(s);
-		}
-		
-		for (final String word :setOfWordsInReview) {
-			if (!wordCount.containsKey(word)) {
-				wordCount.put(word, 1);
-			} else {
-				final int count = wordCount.get(word);
-				wordCount.put(word, count + 1);
-			}
-		}
-			assertTrue( wordCount.containsKey("Illuminati"));
-			assertTrue(wordCount.containsKey("is"));
-			assertFalse( wordCount.containsKey("sun"));
-			
-			if( wordCount.containsKey("is")){
-				assertEquals(1, wordCount.get("is").intValue());
-			}
-			else{
-				assertNull( wordCount.get("is"));
-			}
-					assertEquals(1,  wordCount.get("real").intValue());
-		assertNull( wordCount.get("jupiter"));
-		}
-		*/
 
 	@Test
 	public void TokenizerTestPassing() {
-	//	com.philips.receiver.Receiver junit= new com.philips.receiver.Receiver();
 		
 		Set<String> TestString1 = new TreeSet<String>();
 		TestString1 = Receiver.tokenizer("check the tokenizer funtion");
@@ -68,8 +31,6 @@ public class ReviewTest {
 	}
 	@Test
 	public void TokenizerTestFailing() {
-	//	com.philips.receiver.Receiver junit= new com.philips.receiver.Receiver();
-		
 		Set<String> TestString1 = new TreeSet<String>();
 		TestString1 = Receiver.tokenizer("check the tokenizer funtion");
 		int count1 = TestString1.size();
@@ -83,7 +44,6 @@ public class ReviewTest {
 	public void test() throws FileNotFoundException {	
 
 		HashMap<String, Integer> wordCount = new HashMap<String, Integer>();	
-//		com.philips.receiver.Receiver junit = new com.philips.receiver.Receiver();	
 		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv"));	
 		Receiver.countFrequency(br,wordCount);	
 		assertTrue(wordCount.containsKey("provided"));	
