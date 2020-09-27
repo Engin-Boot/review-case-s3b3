@@ -7,17 +7,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.StringTokenizer;
+//import java.util.StringTokenizer;
 import java.util.TreeSet;
 
 import org.junit.Test;
 
 public class ReviewTest {
 
+	/*
 	@Test
 	public void whenAStringContainsMultipleWordsThenEachWordMustGetAddedToTheList(){
 		String multipleWords = "Illuminati is real";
-		HashMap<String,Integer> wordCount = new HashMap<String, Integer>();
+		HashMap<String,Integer> wordCount = new HashMap<>();
 		
 		final Set<String> setOfWordsInReview = new TreeSet<String>();
 		final StringTokenizer st = new StringTokenizer( multipleWords, " ");
@@ -47,21 +48,11 @@ public class ReviewTest {
 					assertEquals(1,  wordCount.get("real").intValue());
 		assertNull( wordCount.get("jupiter"));
 		}
-		
-	@Test
-	public void test() throws FileNotFoundException {
-		
-		HashMap<String, Integer> wordCount = new HashMap<String, Integer>();
-		com.philips.receiver.Receiver junit = new com.philips.receiver.Receiver();
-		BufferedReader br = new BufferedReader(new FileReader("C:\\\\Users\\\\User\\\\eclipse-workspace\\\\casestudyreview\\\\src\\\\test\\\\resources\\\\senderSampleTest1.csv"));
-		Receiver.countFrequency(br);
-		assertFalse(wordCount.containsKey("No file found"));
-		assertFalse(wordCount.containsKey("future"));
-		assertFalse(wordCount.containsKey("today"));
-	}
+		*/
+
 	@Test
 	public void TokenizerTestPassing() {
-		com.philips.receiver.Receiver junit= new com.philips.receiver.Receiver();
+	//	com.philips.receiver.Receiver junit= new com.philips.receiver.Receiver();
 		
 		Set<String> TestString1 = new TreeSet<String>();
 		TestString1 = Receiver.tokenizer("check the tokenizer funtion");
@@ -77,7 +68,7 @@ public class ReviewTest {
 	}
 	@Test
 	public void TokenizerTestFailing() {
-		com.philips.receiver.Receiver junit= new com.philips.receiver.Receiver();
+	//	com.philips.receiver.Receiver junit= new com.philips.receiver.Receiver();
 		
 		Set<String> TestString1 = new TreeSet<String>();
 		TestString1 = Receiver.tokenizer("check the tokenizer funtion");
@@ -88,6 +79,17 @@ public class ReviewTest {
 	}
 
 
+	@Test	
+	public void test() throws FileNotFoundException {	
+
+		HashMap<String, Integer> wordCount = new HashMap<String, Integer>();	
+//		com.philips.receiver.Receiver junit = new com.philips.receiver.Receiver();	
+		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv"));	
+		Receiver.countFrequency(br,wordCount);	
+		assertTrue(wordCount.containsKey("provided"));	
+		assertFalse(wordCount.containsKey("future"));	
+		assertFalse(wordCount.containsKey("today"));	
+	}
 		
 	
 	

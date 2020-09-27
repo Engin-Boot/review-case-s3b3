@@ -29,10 +29,10 @@ public class Receiver {
 	private static void readFromconsole() {
 
 		final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		countFrequency(reader);
+		countFrequency(reader,wordCount);
 	}
 
-	public static void countFrequency(final BufferedReader reader) {
+	public static void countFrequency(final BufferedReader reader,HashMap<String, Integer> wordCount) {
 
 		try {
 

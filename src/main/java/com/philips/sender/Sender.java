@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-class Sender {
+public class Sender {
 	private static Logger LOGGER = LogManager.getLogger(Sender.class);
 	public static final String DELIMITER = ",";
 
