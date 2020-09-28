@@ -3,11 +3,9 @@ package com.philips.sender;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 
 import org.junit.Assert;
@@ -22,6 +20,7 @@ public class SenderTest {
 		Sender.readFileContentWithoutColumnFilter(br);	
 		assertFalse((filename).isEmpty());
 
+		
 	}
 
 	@Test
@@ -53,16 +52,21 @@ public class SenderTest {
 	public void readFileContentWithoutCoulumnFilterTest() throws IOException {	
 
 		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv"));	
-		com.philips.sender.Sender.readFileContentWithoutColumnFilter(br);			
+		com.philips.sender.Sender.readFileContentWithoutColumnFilter(br);		
 	}	
 
 
 	@Test	
 	public void readFileContentWithCoulumnFilterTest() throws NumberFormatException, IOException, ParseException {	
-	//	InputStream inputStream = new FileInputStream("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudyreview\\src\\test\\resources\\test.csv");	
-		String str = "Comments";	
+		String str = "Comments";
 		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv"));			
-		com.philips.sender.Sender.readFileContentWhenColumnFilterIfProvided(str, reader);	
+		com.philips.sender.Sender.readFileContentWhenColumnFilterIfProvided(str, reader);
+	}
+	
+	@Test
+	public void readFileContentWhenColumnFilterTest() {
+		Sender.readFileContentWhenColumnFilter("This comment is a test case", 4);
+		Sender.readFileContentWhenColumnFilter(" ", 1);
 	}
 
 }
