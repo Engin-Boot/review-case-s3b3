@@ -38,7 +38,7 @@ public class Receiver {
 
 			String line;
 			while ((line = reader.readLine()) != null) {
-				line = line.replaceAll("[\\p{Punct}&&[^/]]+", "");
+				line = line.replaceAll("[\\p{Punct}&&[^/]]+", "").LowerCase();
 				Set<String> wordSet = tokenizer(line);
 				for (final String word : wordSet) {
 					if (!wordCount.containsKey(word)) {
