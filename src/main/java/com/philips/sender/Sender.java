@@ -61,7 +61,7 @@ public class Sender {
 		return columnFilterIndex;
 	}
 
-	private static void readFileContentWhenColumnFilter(String line, int columnFilterIndex) {
+	public static void readFileContentWhenColumnFilter(String line, int columnFilterIndex) {
 		String[] rowEntryDataArray = line.split(DELIMITER);
 		if (columnFilterIndex >= 0 && rowEntryDataArray.length != 1) {
 			if (rowEntryDataArray.length > columnFilterIndex)
