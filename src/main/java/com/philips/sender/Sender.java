@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Sender {
+class Sender {
 	private static Logger LOGGER = LogManager.getLogger(Sender.class);
 	public static final String DELIMITER = ",";
 
@@ -43,12 +43,7 @@ public class Sender {
 			if (line.isEmpty()) {
 				continue;
 			}
-			
-			String[] rowEntryDataArray = line.split(DELIMITER);
-			if (columnFilterIndex >= 0 && rowEntryDataArray.length != 1)
-				readFileContentWhenColumnFilter0(columnFilterIndex,rowEntryDataArray);
-			else if (columnFilterIndex == 1 && rowEntryDataArray.length != 1)
-				readFileContentWhenColumnFilter1(columnFilterIndex,rowEntryDataArray);
+			readFileContentWhenColumnFilter(line, columnFilterIndex);
 		}
 
 	}
@@ -66,21 +61,27 @@ public class Sender {
 		return columnFilterIndex;
 	}
 
-	public static void readFileContentWhenColumnFilter0( int columnFilterIndex,String[] rowEntryDataArray) {
-
-		if (rowEntryDataArray.length > columnFilterIndex)
-			LOGGER.info(rowEntryDataArray[columnFilterIndex]);
-		System.out.println();
+	private static void readFileContentWhenColumnFilter(String line, int columnFilterIndex) {
+		String[] rowEntryDataArray = line.split(DELIMITER);
+		//if (columnFilterIndex >= 0 && rowEntryDataArray.length != 1) {
+		if (rowEntryDataArray.length > columnFilterIndex  && rowEntryDataArray.length != 1)
+				LOGGER.info(rowEntryDataArray[columnFilterIndex]);
+		
+	 printLastColumn(line,columnFilterIndex,rowEntryDataArray);
+		
 	}
+		
 
-	public static void readFileContentWhenColumnFilter1( int columnFilterIndex,String[] rowEntryDataArray) {
-
-		for (String row : rowEntryDataArray) {
-			String space = "  ";
-			LOGGER.info(row + space);
+	private static void printLastColumn(String line, int columnFilterIndex,String[] rowEntryDataArray ) {
+	
+		if(columnFilterIndex == 1 ) {
+			for (String row : rowEntryDataArray) {
+				String space = "  ";
+				LOGGER.info(row + space);
+			}
 		}
-		System.out.println();
-	}
+			System.out.println();
+		}
+	
+
 }
-
-
