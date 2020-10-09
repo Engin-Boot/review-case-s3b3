@@ -35,7 +35,7 @@ public class SenderTest {
 
 	@Test
 	public void checkHeaderCount() throws IOException {
-		String filepath = "src//test//resources//senderSampleTest1.csv";
+		String filepath = "src/test/resources/senderSampleTest1.csv";
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(filepath));
