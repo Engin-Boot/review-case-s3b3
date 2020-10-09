@@ -44,7 +44,7 @@ public class ReceiverTest {
 	public void test() throws FileNotFoundException {	
 
 		String wordCount = "provided";	
-		BufferedReader br = new BufferedReader(new FileReader("src//test//resources//senderSampleTest1.csv"));	
+		BufferedReader br = new BufferedReader(new FileReader("src/test/resources/senderSampleTest1.csv"));	
 		CountWords.countFrequency(wordCount);	
 		assertTrue(wordCount.contains("provided"));	
 		assertFalse(wordCount.contains("future"));	
