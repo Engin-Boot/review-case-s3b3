@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Sender {
+class Sender {
 	private static Logger LOGGER = LogManager.getLogger(Sender.class);
 	public static final String DELIMITER = ",";
 
@@ -61,7 +61,7 @@ public class Sender {
 		return columnFilterIndex;
 	}
 
-	public static void readFileContentWhenColumnFilter(String line, int columnFilterIndex) {
+	private static void readFileContentWhenColumnFilter(String line, int columnFilterIndex) {
 		String[] rowEntryDataArray = line.split(DELIMITER);
 		if (columnFilterIndex >= 0 && rowEntryDataArray.length != 1) {
 			if (rowEntryDataArray.length > columnFilterIndex)

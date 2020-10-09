@@ -3,9 +3,11 @@ package com.philips.sender;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 
 import org.junit.Assert;
@@ -15,12 +17,11 @@ public class SenderTest {
 
 	@Test
 	public void readWhenFileIsEmpty() throws IOException {
-		String filename = "C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv";
+		String filename = "src//test//resources//senderSampleTest1.csv";
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		Sender.readFileContentWithoutColumnFilter(br);	
 		assertFalse((filename).isEmpty());
 
-		
 	}
 
 	@Test
@@ -34,7 +35,7 @@ public class SenderTest {
 
 	@Test
 	public void checkHeaderCount() throws IOException {
-		String filepath = "C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv";
+		String filepath = "src//test//resources//senderSampleTest1.csv";
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(filepath));
@@ -51,22 +52,17 @@ public class SenderTest {
 	@Test	
 	public void readFileContentWithoutCoulumnFilterTest() throws IOException {	
 
-		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv"));	
-		com.philips.sender.Sender.readFileContentWithoutColumnFilter(br);		
+		BufferedReader br = new BufferedReader(new FileReader("src//test//resources//senderSampleTest1.csv"));	
+		com.philips.sender.Sender.readFileContentWithoutColumnFilter(br);			
 	}	
 
 
 	@Test	
 	public void readFileContentWithCoulumnFilterTest() throws NumberFormatException, IOException, ParseException {	
-		String str = "Comments";
-		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\shubhanshu\\eclipse-workspace\\casestudy (1).zip_expanded\\casestudy.zip_expanded\\casestudyreview\\src\\test\\resources\\senderSampleTest1.csv"));			
-		com.philips.sender.Sender.readFileContentWhenColumnFilterIfProvided(str, reader);
-	}
-	
-	@Test
-	public void readFileContentWhenColumnFilterTest() {
-		Sender.readFileContentWhenColumnFilter("This comment is a test case", 4);
-		Sender.readFileContentWhenColumnFilter(" ", 1);
+		
+		String str = "Comments";	
+		BufferedReader reader = new BufferedReader(new FileReader("src//test//resources//senderSampleTest1.csv"));			
+		com.philips.sender.Sender.readFileContentWhenColumnFilterIfProvided(str, reader);	
 	}
 
 }
