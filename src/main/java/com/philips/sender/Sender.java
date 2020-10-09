@@ -63,18 +63,18 @@ class Sender {
 
 	private static void readFileContentWhenColumnFilter(String line, int columnFilterIndex) {
 		String[] rowEntryDataArray = line.split(DELIMITER);
-		if (columnFilterIndex >= 0 && rowEntryDataArray.length != 1) {
-			if (rowEntryDataArray.length > columnFilterIndex)
+		//if (columnFilterIndex >= 0 && rowEntryDataArray.length != 1) {
+		if (rowEntryDataArray.length > columnFilterIndex  && rowEntryDataArray.length != 1)
 				LOGGER.info(rowEntryDataArray[columnFilterIndex]);
-		}
-	 printLastColumn(line,  columnFilterIndex,rowEntryDataArray);
+		
+	 printLastColumn(line,columnFilterIndex,rowEntryDataArray);
 		
 	}
 		
 
 	private static void printLastColumn(String line, int columnFilterIndex,String[] rowEntryDataArray ) {
 	
-		if((columnFilterIndex == 1 && rowEntryDataArray.length != 1)) {
+		if(columnFilterIndex == 1 ) {
 			for (String row : rowEntryDataArray) {
 				String space = "  ";
 				LOGGER.info(row + space);
