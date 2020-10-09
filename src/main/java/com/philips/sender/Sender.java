@@ -67,14 +67,21 @@ class Sender {
 			if (rowEntryDataArray.length > columnFilterIndex)
 				LOGGER.info(rowEntryDataArray[columnFilterIndex]);
 		}
+	 printLastColumn(line,  columnFilterIndex,rowEntryDataArray);
+		
+	}
+		
 
-		else if (columnFilterIndex == 1 && rowEntryDataArray.length != 1) {
+	private static void printLastColumn(String line, int columnFilterIndex,String[] rowEntryDataArray ) {
+	
+		if((columnFilterIndex == 1 && rowEntryDataArray.length != 1)) {
 			for (String row : rowEntryDataArray) {
 				String space = "  ";
 				LOGGER.info(row + space);
 			}
+		}
 			System.out.println();
 		}
-	}
+	
 
 }
