@@ -16,8 +16,10 @@ import java.io.PrintWriter;
 public class Receiver {
 
 	private static HashMap<String, Integer> wordCount = new HashMap<String, Integer>();
+
 	public static void main(final String[] args) throws IOException {
 		BufferedReader reader=Receiver.readInputFromConsole(System.in);
+		parseLineFromCSV(reader);
 		try {
 			writeWordCountToCSV(wordCount);
 		} catch (final Exception e) {
@@ -61,6 +63,7 @@ public class Receiver {
 						wordCount.put(word, count + 1);
 					}
 				}
+
 	}
 
 	public static Set<String> Tokenizer(final String review) {
@@ -72,7 +75,6 @@ public class Receiver {
 		}
 		return setOfWordsInReview;
 	}
-	
 
 	public static void writeWordCountToCSV(final Map<String, Integer> wordCount) throws IOException {
 		Set<String> wordSet = new TreeSet<String>();
